@@ -17,31 +17,80 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
+    SplashRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: const SplashPage(),
       );
-    }
+    },
+    MainFrameRoute.name: (routeData) {
+      final args = routeData.argsAs<MainFrameRouteArgs>(
+          orElse: () => const MainFrameRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: MainFramePage(
+          key: args.key,
+          index: args.index,
+        ),
+      );
+    },
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          HomeRoute.name,
+          SplashRoute.name,
           path: '/',
-        )
+        ),
+        RouteConfig(
+          MainFrameRoute.name,
+          path: '/main-frame-page',
+        ),
       ];
 }
 
 /// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute()
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute()
       : super(
-          HomeRoute.name,
+          SplashRoute.name,
           path: '/',
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'SplashRoute';
+}
+
+/// generated route for
+/// [MainFramePage]
+class MainFrameRoute extends PageRouteInfo<MainFrameRouteArgs> {
+  MainFrameRoute({
+    Key? key,
+    int index = 0,
+  }) : super(
+          MainFrameRoute.name,
+          path: '/main-frame-page',
+          args: MainFrameRouteArgs(
+            key: key,
+            index: index,
+          ),
+        );
+
+  static const String name = 'MainFrameRoute';
+}
+
+class MainFrameRouteArgs {
+  const MainFrameRouteArgs({
+    this.key,
+    this.index = 0,
+  });
+
+  final Key? key;
+
+  final int index;
+
+  @override
+  String toString() {
+    return 'MainFrameRouteArgs{key: $key, index: $index}';
+  }
 }
