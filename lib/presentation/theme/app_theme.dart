@@ -18,7 +18,9 @@ class AppTheme {
           onSurface: AppColors.chineseBlack,
         ),
         appBarTheme: AppBarTheme(
-          backgroundColor: AppColors.sasquatchSocks,
+          elevation: 1,
+          backgroundColor: AppColors.white,
+          titleTextStyle: getTextTheme(ThemeMode.light).titleMedium,
         ),
         textTheme: getTextTheme(ThemeMode.light),
       );
