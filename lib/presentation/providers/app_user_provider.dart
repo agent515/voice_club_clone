@@ -5,22 +5,29 @@ import 'package:voice_club_clone/data/repositories/auth_repository_impl.dart';
 import 'package:voice_club_clone/domain/entities/app_user.dart';
 import 'package:voice_club_clone/domain/repositories/auth_repository.dart';
 
-final appUserProvider =
-    StateNotifierProvider((ref) => AppUserProvider(ref.read(authRepository)));
+final isNewUserStateProvider = StateProvider((ref) => false);
 
-class AppUserProvider extends StateNotifier<AppUser?> {
+final appUserProvider =
+    StateNotifierProvider<AppUserProvider, AsyncValue<AppUser?>>(
+  (ref) => AppUserProvider(
+    ref.read(authRepository),
+  ),
+);
+
+class AppUserProvider extends StateNotifier<AsyncValue<AppUser?>> {
   final AuthRepository _authRepository;
 
   StreamSubscription<Future<AppUser?>>? userChangesStreamSubscription;
 
-  AppUserProvider(this._authRepository) : super(null) {
+  AppUserProvider(this._authRepository) : super(const AsyncValue.data(null)) {
     _init();
   }
 
   Future _init() async {
     userChangesStreamSubscription = _authRepository.userChangesStream.listen(
       (user) async {
-        state = await user;
+        AppUser? appUser = await user;
+        state = AsyncValue.data(appUser);
       },
     );
   }
