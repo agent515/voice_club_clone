@@ -108,6 +108,7 @@ class MyBottomNavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(16),
       splashFactory: InkSplash.splashFactory,
       onTap: onTap,
       child: Column(
