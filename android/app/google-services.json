@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "698354138306",
+    "project_id": "voice-club-clone",
+    "storage_bucket": "voice-club-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698354138306:android:ed8a2c2b390499cfcd0f5b",
+        "android_client_info": {
+          "package_name": "com.example.voice_club_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698354138306-8q83k3ehl5ne0j0jkog9gl7290o19ide.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU3BDtTFD5X2jq04eAxa3B6wnJH35drEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698354138306-8q83k3ehl5ne0j0jkog9gl7290o19ide.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
