@@ -53,7 +53,9 @@ class MyBottomNavItem extends StatelessWidget {
                 ),
           Text(
             label,
-            style: Theme.of(context).textTheme.labelMedium,
+            style: isSelected
+                ? Theme.of(context).textTheme.labelLarge
+                : Theme.of(context).textTheme.labelMedium,
           )
         ],
       ),
