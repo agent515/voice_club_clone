@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:voice_club_clone/domain/entities/app_user.dart';
 
 part 'app_user_dto.freezed.dart';
+part 'app_user_dto.g.dart';
 
 @freezed
 class AppUserDto with _$AppUserDto {
@@ -11,10 +12,13 @@ class AppUserDto with _$AppUserDto {
     required String phone,
     required double balance,
   }) = _AppUserDto;
+
+  factory AppUserDto.fromJson(Map<String, dynamic> data) =>
+      _$AppUserDtoFromJson(data);
 }
 
-extension AppUserDtoExtensionEntityToDto on AppUserDto {
-  AppUser toDto() => AppUser(
+extension AppUserDtoExtensionDtoToEntity on AppUserDto {
+  AppUser toEntity() => AppUser(
         id: id,
         name: name,
         phone: phone,

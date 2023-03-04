@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AppUserDto _$AppUserDtoFromJson(Map<String, dynamic> json) {
+  return _AppUserDto.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AppUserDto {
   String get id => throw _privateConstructorUsedError;
@@ -21,6 +25,7 @@ mixin _$AppUserDto {
   String get phone => throw _privateConstructorUsedError;
   double get balance => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppUserDtoCopyWith<AppUserDto> get copyWith =>
       throw _privateConstructorUsedError;
@@ -123,13 +128,16 @@ class __$$_AppUserDtoCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AppUserDto implements _AppUserDto {
   const _$_AppUserDto(
       {required this.id,
       required this.name,
       required this.phone,
       required this.balance});
+
+  factory _$_AppUserDto.fromJson(Map<String, dynamic> json) =>
+      _$$_AppUserDtoFromJson(json);
 
   @override
   final String id;
@@ -156,6 +164,7 @@ class _$_AppUserDto implements _AppUserDto {
             (identical(other.balance, balance) || other.balance == balance));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, phone, balance);
 
@@ -164,6 +173,13 @@ class _$_AppUserDto implements _AppUserDto {
   @pragma('vm:prefer-inline')
   _$$_AppUserDtoCopyWith<_$_AppUserDto> get copyWith =>
       __$$_AppUserDtoCopyWithImpl<_$_AppUserDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AppUserDtoToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AppUserDto implements AppUserDto {
@@ -172,6 +188,9 @@ abstract class _AppUserDto implements AppUserDto {
       required final String name,
       required final String phone,
       required final double balance}) = _$_AppUserDto;
+
+  factory _AppUserDto.fromJson(Map<String, dynamic> json) =
+      _$_AppUserDto.fromJson;
 
   @override
   String get id;
