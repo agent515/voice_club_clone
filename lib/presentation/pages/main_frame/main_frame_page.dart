@@ -77,7 +77,7 @@ class _MainFramePageState extends ConsumerState<MainFramePage> {
                         ref.read(bottomNavStateProvider.notifier).state = 1,
                   ),
                   MyBottomNavItem(
-                    icon: Icons.person,
+                    icon: Icons.person_2_outlined,
                     label: 'Account',
                     isSelected: ref.read(bottomNavStateProvider) == 2,
                     onTap: () =>
