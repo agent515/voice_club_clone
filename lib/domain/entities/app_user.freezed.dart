@@ -125,7 +125,7 @@ class _$_AppUser implements _AppUser {
       {required this.id,
       required this.name,
       required this.phone,
-      required this.balance});
+      this.balance = 0.0});
 
   @override
   final String id;
@@ -134,6 +134,7 @@ class _$_AppUser implements _AppUser {
   @override
   final String phone;
   @override
+  @JsonKey()
   final double balance;
 
   @override
@@ -167,7 +168,7 @@ abstract class _AppUser implements AppUser {
       {required final String id,
       required final String name,
       required final String phone,
-      required final double balance}) = _$_AppUser;
+      final double balance}) = _$_AppUser;
 
   @override
   String get id;

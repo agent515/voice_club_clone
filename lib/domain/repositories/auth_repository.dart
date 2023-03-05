@@ -3,7 +3,8 @@ import 'package:voice_club_clone/core/errors/app_error.dart';
 import 'package:voice_club_clone/domain/entities/app_user.dart';
 
 abstract class AuthRepository {
-  Stream<Future<AppUser?>> get userChangesStream;
+  Stream<Future<Either<AppError, AppUser?>>> get userChangesStream;
+  Future<Either<AppError, void>> createUser(String name);
   Future<Either<AppError, void>> updateUser(AppUser user);
   // Sign in
   Future<Either<AppError, void>> verifyPhoneNumber({
@@ -13,7 +14,6 @@ abstract class AuthRepository {
       int? forceResendingToken,
     )
         onCodeSent,
-    required void Function(bool) isNewUser,
     void Function(AppError e)? verificationFailed,
   });
   Future<Either<AppError, void>> submitOtp({

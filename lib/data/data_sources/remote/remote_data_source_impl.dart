@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:voice_club_clone/core/errors/user_sign_up_remaining_error.dart';
 import 'package:voice_club_clone/data/dto/app_user_dto.dart';
 import 'package:voice_club_clone/core/errors/app_error.dart';
 import 'package:dartz/dartz.dart';
@@ -25,11 +26,13 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     try {
       DocumentReference<AppUserDto> docRef = getUserDocumentRef(uid);
       DocumentSnapshot<AppUserDto> documentSnapshot = await docRef.get();
-      AppUserDto? userDto = documentSnapshot.data();
-      if (userDto != null) {
-        return Right(userDto);
+      if (documentSnapshot.exists) {
+        AppUserDto? userDto = documentSnapshot.data();
+        if (userDto != null) {
+          return Right(userDto);
+        }
       }
-      return Left(AppError(message: 'User not found.'));
+      return Left(UserSignUpRemaningError());
     } catch (e) {
       print(e);
       return Left(AppError(message: e.toString()));

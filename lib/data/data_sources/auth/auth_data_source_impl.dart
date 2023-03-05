@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -10,6 +12,19 @@ final authDataSource = Provider((ref) => AuthDataSourceImpl());
 class AuthDataSourceImpl implements AuthDataSource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  late final StreamSubscription<User?> _subscription;
+
+  AuthDataSourceImpl() {
+    _subscription = _auth.userChanges().listen((user) {
+      _currentUser = user;
+    });
+  }
+
+  User? _currentUser;
+
+  @override
+  User? get user => _currentUser;
+
   @override
   Stream<User?> get userChangesStream => _auth.userChanges();
 
@@ -18,22 +33,26 @@ class AuthDataSourceImpl implements AuthDataSource {
     required String phoneNumber,
     required void Function(String verificationId, int? forceResendingToken)
         onCodeSent,
-    required void Function(bool val) isNewUser,
     void Function(FirebaseAuthException e)? verificationFailed,
   }) async {
     try {
-      final result = await _auth.verifyPhoneNumber(
+      await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (credential) async {
           debugPrint("VERIFICATION COMPLETED");
           UserCredential userCredential =
               await _auth.signInWithCredential(credential);
-
-          isNewUser(userCredential.additionalUserInfo?.isNewUser ?? false);
+          if (userCredential.user != null) {
+            debugPrint("Success");
+          } else {
+            debugPrint("Failure");
+          }
         },
         verificationFailed: (e) {
           print(e.code);
           print(e);
+          debugPrint("Verification Failed");
+
           if (verificationFailed != null) {
             verificationFailed(e);
           }
@@ -60,12 +79,20 @@ class AuthDataSourceImpl implements AuthDataSource {
         smsCode: smsCode,
       );
 
-      await _auth.currentUser!.multiFactor.enroll(
-        PhoneMultiFactorGenerator.getAssertion(
-          credential,
-        ),
-      );
-      debugPrint("success");
+      final UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+
+      if (userCredential.user != null) {
+        debugPrint("Success");
+      } else {
+        debugPrint("Failure");
+      }
+      // await _auth.currentUser!.multiFactor.enroll(
+      //   PhoneMultiFactorGenerator.getAssertion(
+      //     credential,
+      //   ),
+      // );
+      // debugPrint("success");
 
       return const Right(null);
     } on FirebaseAuthException catch (e) {

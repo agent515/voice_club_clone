@@ -10,7 +10,7 @@ class AppUserDto with _$AppUserDto {
     required String id,
     required String name,
     required String phone,
-    required double balance,
+    @Default(0.0) double balance,
   }) = _AppUserDto;
 
   factory AppUserDto.fromJson(Map<String, dynamic> data) =>

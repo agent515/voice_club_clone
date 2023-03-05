@@ -11,7 +11,7 @@ _$_AppUserDto _$$_AppUserDtoFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       phone: json['phone'] as String,
-      balance: (json['balance'] as num).toDouble(),
+      balance: (json['balance'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$$_AppUserDtoToJson(_$_AppUserDto instance) =>

@@ -5,37 +5,54 @@ import 'package:voice_club_clone/presentation/providers/app_user_provider.dart';
 
 class RootPageViewModel extends StateNotifier<RootPageViewState> {
   final AppUserProvider _appUserProvider;
+  final StateController _userSignUpRemaningStateController;
 
   bool _showSplashScreen = true;
 
   late AsyncValue<AppUser?> _appUserState;
+  late bool _userSignUpRemaningState;
 
-  RootPageViewModel(this._appUserProvider)
+  RootPageViewModel(
+      this._appUserProvider, this._userSignUpRemaningStateController)
       : super(const RootPageViewState.loading(true)) {
     Future.delayed(const Duration(seconds: 2)).then((_) {
       _showSplashScreen = false;
-      _updateState(_appUserState);
+      _updateState();
     });
     _appUserProvider.addListener(
       (appUserState) {
-        if (_showSplashScreen) {
-          _appUserState = appUserState;
+        _appUserState = appUserState;
+
+        if (!_showSplashScreen) {
+          _updateState();
+        }
+      },
+    );
+    _userSignUpRemaningStateController.addListener(
+      (state) {
+        _userSignUpRemaningState = state;
+        if (!_showSplashScreen) {
+          _updateState();
         }
       },
     );
   }
 
-  void _updateState(AsyncValue<AppUser?> appUserState) {
-    if (appUserState.isLoading) {
+  void _updateState() {
+    if (_appUserState.isLoading) {
       state = const RootPageViewState.loading(false);
-    } else if (appUserState is AsyncError) {
-      state = RootPageViewState.error(appUserState.error.toString());
-    } else if (appUserState.hasValue) {
-      AppUser? appUser = appUserState.value;
+    } else if (_appUserState is AsyncError) {
+      state = RootPageViewState.error(_appUserState.error.toString());
+    } else if (_appUserState.hasValue) {
+      AppUser? appUser = _appUserState.value;
       if (appUser != null) {
         state = const RootPageViewState.user();
       } else {
-        state = const RootPageViewState.auth();
+        if (_userSignUpRemaningState) {
+          state = const RootPageViewState.signUp();
+        } else {
+          state = const RootPageViewState.auth();
+        }
       }
     }
   }

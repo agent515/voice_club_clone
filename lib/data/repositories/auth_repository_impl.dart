@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,26 +23,35 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthDataSource _authDataSource;
   final RemoteDataSource _remoteDataSource;
 
+  StreamController<Future<Either<AppError, AppUser?>>> userStreamController =
+      StreamController.broadcast();
+
   AuthRepositoryImpl(
     this._authDataSource,
     this._remoteDataSource,
-  );
+  ) {
+    _init();
+  }
+
+  _init() async {
+    _authDataSource.userChangesStream.listen(
+      (user) async => userStreamController.add(
+        _firebaseUserToAppUser(user),
+      ),
+    );
+  }
 
   @override
-  Stream<Future<AppUser?>> get userChangesStream =>
-      _authDataSource.userChangesStream
-          .map((user) async => _firebaseUserToAppUser(user));
+  Stream<Future<Either<AppError, AppUser?>>> get userChangesStream =>
+      userStreamController.stream;
 
-  Future<AppUser?> _firebaseUserToAppUser(User? user) async {
-    if (user == null) return null;
+  Future<Either<AppError, AppUser?>> _firebaseUserToAppUser(User? user) async {
+    if (user == null) return const Right(null);
 
     final getUserResult = await _remoteDataSource.getUser(user.uid);
     return getUserResult.fold(
-      (l) {
-        print(l);
-        return null;
-      },
-      (r) => r.toEntity(),
+      (l) => Left(l),
+      (r) => Right(r.toEntity()),
     );
   }
 
@@ -50,12 +61,10 @@ class AuthRepositoryImpl implements AuthRepository {
     required void Function(String verificationId, int? forceResendingToken)
         onCodeSent,
     void Function(AppError e)? verificationFailed,
-    required void Function(bool) isNewUser,
   }) async =>
       _authDataSource.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         onCodeSent: onCodeSent,
-        isNewUser: isNewUser,
         verificationFailed: (e) {},
       );
 
@@ -73,4 +82,24 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Either<AppError, void>> updateUser(AppUser user) async =>
       _remoteDataSource.updateUser(user.toDto());
+
+  @override
+  Future<Either<AppError, void>> createUser(String name) async {
+    User? user = _authDataSource.user;
+
+    if (user != null) {
+      AppUserDto appUserDto = AppUserDto(
+        id: user.uid,
+        name: name,
+        phone: user.phoneNumber!,
+      );
+      final result = await _remoteDataSource.updateUser(appUserDto);
+      result.fold(
+        (l) => Left(l),
+        (r) => userStreamController
+            .add(Future.value(Right(appUserDto.toEntity()))),
+      );
+    }
+    return Left(AppError(message: "User not signed in"));
+  }
 }

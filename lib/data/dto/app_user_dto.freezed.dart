@@ -134,7 +134,7 @@ class _$_AppUserDto implements _AppUserDto {
       {required this.id,
       required this.name,
       required this.phone,
-      required this.balance});
+      this.balance = 0.0});
 
   factory _$_AppUserDto.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserDtoFromJson(json);
@@ -146,6 +146,7 @@ class _$_AppUserDto implements _AppUserDto {
   @override
   final String phone;
   @override
+  @JsonKey()
   final double balance;
 
   @override
@@ -187,7 +188,7 @@ abstract class _AppUserDto implements AppUserDto {
       {required final String id,
       required final String name,
       required final String phone,
-      required final double balance}) = _$_AppUserDto;
+      final double balance}) = _$_AppUserDto;
 
   factory _AppUserDto.fromJson(Map<String, dynamic> json) =
       _$_AppUserDto.fromJson;

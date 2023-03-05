@@ -19,6 +19,7 @@ mixin _$RootPageViewState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
+    required TResult Function() signUp,
     required TResult Function() user,
     required TResult Function(bool showSplashScreen) loading,
     required TResult Function(String errorMessage) error,
@@ -27,6 +28,7 @@ mixin _$RootPageViewState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
+    TResult? Function()? signUp,
     TResult? Function()? user,
     TResult? Function(bool showSplashScreen)? loading,
     TResult? Function(String errorMessage)? error,
@@ -35,6 +37,7 @@ mixin _$RootPageViewState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
+    TResult Function()? signUp,
     TResult Function()? user,
     TResult Function(bool showSplashScreen)? loading,
     TResult Function(String errorMessage)? error,
@@ -44,6 +47,7 @@ mixin _$RootPageViewState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RootPageViewStateAuth value) auth,
+    required TResult Function(_RootPageViewStateSignUp value) signUp,
     required TResult Function(_RootPageViewStateUser value) user,
     required TResult Function(_RootPageViewStateLoading value) loading,
     required TResult Function(_RootPageViewStateError value) error,
@@ -52,6 +56,7 @@ mixin _$RootPageViewState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RootPageViewStateAuth value)? auth,
+    TResult? Function(_RootPageViewStateSignUp value)? signUp,
     TResult? Function(_RootPageViewStateUser value)? user,
     TResult? Function(_RootPageViewStateLoading value)? loading,
     TResult? Function(_RootPageViewStateError value)? error,
@@ -60,6 +65,7 @@ mixin _$RootPageViewState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RootPageViewStateAuth value)? auth,
+    TResult Function(_RootPageViewStateSignUp value)? signUp,
     TResult Function(_RootPageViewStateUser value)? user,
     TResult Function(_RootPageViewStateLoading value)? loading,
     TResult Function(_RootPageViewStateError value)? error,
@@ -125,6 +131,7 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
+    required TResult Function() signUp,
     required TResult Function() user,
     required TResult Function(bool showSplashScreen) loading,
     required TResult Function(String errorMessage) error,
@@ -136,6 +143,7 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
+    TResult? Function()? signUp,
     TResult? Function()? user,
     TResult? Function(bool showSplashScreen)? loading,
     TResult? Function(String errorMessage)? error,
@@ -147,6 +155,7 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
+    TResult Function()? signUp,
     TResult Function()? user,
     TResult Function(bool showSplashScreen)? loading,
     TResult Function(String errorMessage)? error,
@@ -162,6 +171,7 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RootPageViewStateAuth value) auth,
+    required TResult Function(_RootPageViewStateSignUp value) signUp,
     required TResult Function(_RootPageViewStateUser value) user,
     required TResult Function(_RootPageViewStateLoading value) loading,
     required TResult Function(_RootPageViewStateError value) error,
@@ -173,6 +183,7 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RootPageViewStateAuth value)? auth,
+    TResult? Function(_RootPageViewStateSignUp value)? signUp,
     TResult? Function(_RootPageViewStateUser value)? user,
     TResult? Function(_RootPageViewStateLoading value)? loading,
     TResult? Function(_RootPageViewStateError value)? error,
@@ -184,6 +195,7 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RootPageViewStateAuth value)? auth,
+    TResult Function(_RootPageViewStateSignUp value)? signUp,
     TResult Function(_RootPageViewStateUser value)? user,
     TResult Function(_RootPageViewStateLoading value)? loading,
     TResult Function(_RootPageViewStateError value)? error,
@@ -198,6 +210,127 @@ class _$_RootPageViewStateAuth implements _RootPageViewStateAuth {
 
 abstract class _RootPageViewStateAuth implements RootPageViewState {
   const factory _RootPageViewStateAuth() = _$_RootPageViewStateAuth;
+}
+
+/// @nodoc
+abstract class _$$_RootPageViewStateSignUpCopyWith<$Res> {
+  factory _$$_RootPageViewStateSignUpCopyWith(_$_RootPageViewStateSignUp value,
+          $Res Function(_$_RootPageViewStateSignUp) then) =
+      __$$_RootPageViewStateSignUpCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RootPageViewStateSignUpCopyWithImpl<$Res>
+    extends _$RootPageViewStateCopyWithImpl<$Res, _$_RootPageViewStateSignUp>
+    implements _$$_RootPageViewStateSignUpCopyWith<$Res> {
+  __$$_RootPageViewStateSignUpCopyWithImpl(_$_RootPageViewStateSignUp _value,
+      $Res Function(_$_RootPageViewStateSignUp) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_RootPageViewStateSignUp implements _RootPageViewStateSignUp {
+  const _$_RootPageViewStateSignUp();
+
+  @override
+  String toString() {
+    return 'RootPageViewState.signUp()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RootPageViewStateSignUp);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() auth,
+    required TResult Function() signUp,
+    required TResult Function() user,
+    required TResult Function(bool showSplashScreen) loading,
+    required TResult Function(String errorMessage) error,
+  }) {
+    return signUp();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? auth,
+    TResult? Function()? signUp,
+    TResult? Function()? user,
+    TResult? Function(bool showSplashScreen)? loading,
+    TResult? Function(String errorMessage)? error,
+  }) {
+    return signUp?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? auth,
+    TResult Function()? signUp,
+    TResult Function()? user,
+    TResult Function(bool showSplashScreen)? loading,
+    TResult Function(String errorMessage)? error,
+    required TResult orElse(),
+  }) {
+    if (signUp != null) {
+      return signUp();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RootPageViewStateAuth value) auth,
+    required TResult Function(_RootPageViewStateSignUp value) signUp,
+    required TResult Function(_RootPageViewStateUser value) user,
+    required TResult Function(_RootPageViewStateLoading value) loading,
+    required TResult Function(_RootPageViewStateError value) error,
+  }) {
+    return signUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RootPageViewStateAuth value)? auth,
+    TResult? Function(_RootPageViewStateSignUp value)? signUp,
+    TResult? Function(_RootPageViewStateUser value)? user,
+    TResult? Function(_RootPageViewStateLoading value)? loading,
+    TResult? Function(_RootPageViewStateError value)? error,
+  }) {
+    return signUp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RootPageViewStateAuth value)? auth,
+    TResult Function(_RootPageViewStateSignUp value)? signUp,
+    TResult Function(_RootPageViewStateUser value)? user,
+    TResult Function(_RootPageViewStateLoading value)? loading,
+    TResult Function(_RootPageViewStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (signUp != null) {
+      return signUp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RootPageViewStateSignUp implements RootPageViewState {
+  const factory _RootPageViewStateSignUp() = _$_RootPageViewStateSignUp;
 }
 
 /// @nodoc
@@ -239,6 +372,7 @@ class _$_RootPageViewStateUser implements _RootPageViewStateUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
+    required TResult Function() signUp,
     required TResult Function() user,
     required TResult Function(bool showSplashScreen) loading,
     required TResult Function(String errorMessage) error,
@@ -250,6 +384,7 @@ class _$_RootPageViewStateUser implements _RootPageViewStateUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
+    TResult? Function()? signUp,
     TResult? Function()? user,
     TResult? Function(bool showSplashScreen)? loading,
     TResult? Function(String errorMessage)? error,
@@ -261,6 +396,7 @@ class _$_RootPageViewStateUser implements _RootPageViewStateUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
+    TResult Function()? signUp,
     TResult Function()? user,
     TResult Function(bool showSplashScreen)? loading,
     TResult Function(String errorMessage)? error,
@@ -276,6 +412,7 @@ class _$_RootPageViewStateUser implements _RootPageViewStateUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RootPageViewStateAuth value) auth,
+    required TResult Function(_RootPageViewStateSignUp value) signUp,
     required TResult Function(_RootPageViewStateUser value) user,
     required TResult Function(_RootPageViewStateLoading value) loading,
     required TResult Function(_RootPageViewStateError value) error,
@@ -287,6 +424,7 @@ class _$_RootPageViewStateUser implements _RootPageViewStateUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RootPageViewStateAuth value)? auth,
+    TResult? Function(_RootPageViewStateSignUp value)? signUp,
     TResult? Function(_RootPageViewStateUser value)? user,
     TResult? Function(_RootPageViewStateLoading value)? loading,
     TResult? Function(_RootPageViewStateError value)? error,
@@ -298,6 +436,7 @@ class _$_RootPageViewStateUser implements _RootPageViewStateUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RootPageViewStateAuth value)? auth,
+    TResult Function(_RootPageViewStateSignUp value)? signUp,
     TResult Function(_RootPageViewStateUser value)? user,
     TResult Function(_RootPageViewStateLoading value)? loading,
     TResult Function(_RootPageViewStateError value)? error,
@@ -382,6 +521,7 @@ class _$_RootPageViewStateLoading implements _RootPageViewStateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
+    required TResult Function() signUp,
     required TResult Function() user,
     required TResult Function(bool showSplashScreen) loading,
     required TResult Function(String errorMessage) error,
@@ -393,6 +533,7 @@ class _$_RootPageViewStateLoading implements _RootPageViewStateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
+    TResult? Function()? signUp,
     TResult? Function()? user,
     TResult? Function(bool showSplashScreen)? loading,
     TResult? Function(String errorMessage)? error,
@@ -404,6 +545,7 @@ class _$_RootPageViewStateLoading implements _RootPageViewStateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
+    TResult Function()? signUp,
     TResult Function()? user,
     TResult Function(bool showSplashScreen)? loading,
     TResult Function(String errorMessage)? error,
@@ -419,6 +561,7 @@ class _$_RootPageViewStateLoading implements _RootPageViewStateLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RootPageViewStateAuth value) auth,
+    required TResult Function(_RootPageViewStateSignUp value) signUp,
     required TResult Function(_RootPageViewStateUser value) user,
     required TResult Function(_RootPageViewStateLoading value) loading,
     required TResult Function(_RootPageViewStateError value) error,
@@ -430,6 +573,7 @@ class _$_RootPageViewStateLoading implements _RootPageViewStateLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RootPageViewStateAuth value)? auth,
+    TResult? Function(_RootPageViewStateSignUp value)? signUp,
     TResult? Function(_RootPageViewStateUser value)? user,
     TResult? Function(_RootPageViewStateLoading value)? loading,
     TResult? Function(_RootPageViewStateError value)? error,
@@ -441,6 +585,7 @@ class _$_RootPageViewStateLoading implements _RootPageViewStateLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RootPageViewStateAuth value)? auth,
+    TResult Function(_RootPageViewStateSignUp value)? signUp,
     TResult Function(_RootPageViewStateUser value)? user,
     TResult Function(_RootPageViewStateLoading value)? loading,
     TResult Function(_RootPageViewStateError value)? error,
@@ -530,6 +675,7 @@ class _$_RootPageViewStateError implements _RootPageViewStateError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() auth,
+    required TResult Function() signUp,
     required TResult Function() user,
     required TResult Function(bool showSplashScreen) loading,
     required TResult Function(String errorMessage) error,
@@ -541,6 +687,7 @@ class _$_RootPageViewStateError implements _RootPageViewStateError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? auth,
+    TResult? Function()? signUp,
     TResult? Function()? user,
     TResult? Function(bool showSplashScreen)? loading,
     TResult? Function(String errorMessage)? error,
@@ -552,6 +699,7 @@ class _$_RootPageViewStateError implements _RootPageViewStateError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? auth,
+    TResult Function()? signUp,
     TResult Function()? user,
     TResult Function(bool showSplashScreen)? loading,
     TResult Function(String errorMessage)? error,
@@ -567,6 +715,7 @@ class _$_RootPageViewStateError implements _RootPageViewStateError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RootPageViewStateAuth value) auth,
+    required TResult Function(_RootPageViewStateSignUp value) signUp,
     required TResult Function(_RootPageViewStateUser value) user,
     required TResult Function(_RootPageViewStateLoading value) loading,
     required TResult Function(_RootPageViewStateError value) error,
@@ -578,6 +727,7 @@ class _$_RootPageViewStateError implements _RootPageViewStateError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RootPageViewStateAuth value)? auth,
+    TResult? Function(_RootPageViewStateSignUp value)? signUp,
     TResult? Function(_RootPageViewStateUser value)? user,
     TResult? Function(_RootPageViewStateLoading value)? loading,
     TResult? Function(_RootPageViewStateError value)? error,
@@ -589,6 +739,7 @@ class _$_RootPageViewStateError implements _RootPageViewStateError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RootPageViewStateAuth value)? auth,
+    TResult Function(_RootPageViewStateSignUp value)? signUp,
     TResult Function(_RootPageViewStateUser value)? user,
     TResult Function(_RootPageViewStateLoading value)? loading,
     TResult Function(_RootPageViewStateError value)? error,

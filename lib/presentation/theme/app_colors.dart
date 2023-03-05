@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static Color sasquatchSocks = const Color(0xFFff3c83);
+  static Color sasquatchSocks = const Color(0xFFFF4186);
   static Color royalOrange = const Color(0xFFff9f4b);
   static Color offWhite = const Color(0xFFFAF9F6);
   static Color white = Colors.white;

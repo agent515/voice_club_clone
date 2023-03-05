@@ -9,7 +9,7 @@ class AppUser with _$AppUser {
     required String id,
     required String name,
     required String phone,
-    required double balance,
+    @Default(0.0) double balance,
   }) = _AppUser;
 }
 
