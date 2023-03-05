@@ -22,7 +22,17 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const RootPage(),
       );
-    }
+    },
+    VoiceCallRoomRoute.name: (routeData) {
+      final args = routeData.argsAs<VoiceCallRoomRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: VoiceCallRoomPage(
+          key: args.key,
+          name: args.name,
+        ),
+      );
+    },
   };
 
   @override
@@ -30,7 +40,11 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           RootRoute.name,
           path: '/',
-        )
+        ),
+        RouteConfig(
+          VoiceCallRoomRoute.name,
+          path: '/voice-call-room-page',
+        ),
       ];
 }
 
@@ -44,4 +58,38 @@ class RootRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RootRoute';
+}
+
+/// generated route for
+/// [VoiceCallRoomPage]
+class VoiceCallRoomRoute extends PageRouteInfo<VoiceCallRoomRouteArgs> {
+  VoiceCallRoomRoute({
+    Key? key,
+    required String name,
+  }) : super(
+          VoiceCallRoomRoute.name,
+          path: '/voice-call-room-page',
+          args: VoiceCallRoomRouteArgs(
+            key: key,
+            name: name,
+          ),
+        );
+
+  static const String name = 'VoiceCallRoomRoute';
+}
+
+class VoiceCallRoomRouteArgs {
+  const VoiceCallRoomRouteArgs({
+    this.key,
+    required this.name,
+  });
+
+  final Key? key;
+
+  final String name;
+
+  @override
+  String toString() {
+    return 'VoiceCallRoomRouteArgs{key: $key, name: $name}';
+  }
 }
