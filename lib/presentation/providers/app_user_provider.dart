@@ -66,6 +66,8 @@ class AppUserProvider extends StateNotifier<AsyncValue<AppUser?>> {
   Future<Either<AppError, void>> createUser(String name) async =>
       _authRepository.createUser(name);
 
+  Future<Either<AppError, void>> signOut() async => _authRepository.signOut();
+
   @override
   void dispose() async {
     await userChangesStreamSubscription?.cancel();
