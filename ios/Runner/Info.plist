@@ -47,5 +47,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This App requires access to your microphone</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This App requires access to your local network</string>
+
 </dict>
 </plist>
