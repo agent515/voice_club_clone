@@ -94,10 +94,18 @@ class AuthRepositoryImpl implements AuthRepository {
         phone: user.phoneNumber!,
       );
       final result = await _remoteDataSource.updateUser(appUserDto);
-      result.fold(
+      return result.fold(
         (l) => Left(l),
-        (r) => userStreamController
-            .add(Future.value(Right(appUserDto.toEntity()))),
+        (r) {
+          userStreamController.add(
+            Future.value(
+              Right(
+                appUserDto.toEntity(),
+              ),
+            ),
+          );
+          return const Right(null);
+        },
       );
     }
     return Left(AppError(message: "User not signed in"));

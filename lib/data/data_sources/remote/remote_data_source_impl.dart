@@ -46,7 +46,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
           getUserCollectionRef(appUserDto.id);
       await collectionRef.doc(appUserDto.id).set(appUserDto);
 
-      return Left(AppError(message: 'User not found.'));
+      return const Right(null);
     } catch (e) {
       print(e);
       return Left(AppError(message: e.toString()));
